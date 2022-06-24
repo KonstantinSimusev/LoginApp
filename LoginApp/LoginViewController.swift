@@ -16,7 +16,27 @@ class LoginViewController: UIViewController {
     // MARK: - Private Properties
     private let userName = "Kira"
     private let password = "0"
-
+    
+    private let primaryColor = UIColor(
+        red: 70/255,
+        green: 202/255,
+        blue: 108/255,
+        alpha: 1
+    )
+    
+    private let secondaryColor = UIColor(
+        red: 107/255,
+        green: 148/255,
+        blue: 230/255,
+        alpha: 1
+    )
+    
+    // MARK: Ovveride Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomVC = segue.destination as? WelcomeViewController else { return }
@@ -25,13 +45,13 @@ class LoginViewController: UIViewController {
     
     // MARK: - IBActions
     @IBAction func logInPressed() {
-//        if userNameTextField.text != userName || passwordTextField.text != password {
-//            showAlert(
-//                title: "Invalid login or passsword",
-//                message: "Please, enter correct login or password",
-//                textField: passwordTextField
-//            )
-//        }
+        if userNameTextField.text != userName || passwordTextField.text != password {
+            showAlert(
+                title: "Invalid login or passsword",
+                message: "Please, enter correct login or password",
+                textField: passwordTextField
+            )
+        }
     }
     
     @IBAction func forgotRegisterData(_ sender: UIButton) {
